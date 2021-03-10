@@ -51,6 +51,18 @@
         )
     }
 
+    function Soma({num1, num2}){
+        return
+        (
+            <React.Fragment>
+                {/*React.Fragment permite agrupar vários elementos
+                HTML dentro de um mesmo componente React e retorná-los em conjunto*/}
+                <p>O Resultado da soma é:</p> 
+                <div>{num1 + num2}</div>
+            </React.Fragment>
+        ) 
+    }
+
     // Renderizar = processar um código JS para gerar elementos HTML.
 
     // Usando o componente personalizado representado pela função Message.
@@ -59,6 +71,9 @@
     //  de tags HTML comuns.
     element = (
         <div className='container'>
+            { /* Quando for necessário passar props cujo valor NÃO seja string, é ne
+            cessário que esteja entre chave {} */}
+            <Soma num1 ={100} num2 = {200} />
             <Message subject="mamãe" greeting = "Alô" />
             <Message greeting="Bem-Vindo" subject="humano" />
             {Message({subject: 'João', greeting: 'Olá'})}

@@ -18,11 +18,30 @@ function UsernameForm({onSubmitUsername}) {
 
   // 🐨 make sure to associate the label to the input.
   // to do so, set the value of 'htmlFor' prop of the label to the id of input
+  
+  // Criando uma ref, um recurso do React para acessar o conteúdo
+  // de elementos de formulários.
+  const usernameE1 = React.useRef(null)  
+
+// Quando o formulário for enviado('submit'), a função handleSubmit será chamada.
+// Associando à la HTML.
+//document.querySelector('form').addEventListener('submit', handleSubmit)
+  function handleSubmit(event){
+
+    event.preventDefault() // Previne o recarregamento do formulário
+
+    //const username = document.getElementById('username').value
+    //const username = document.querySelector('#username').value
+    const username = usernameE1.current.value
+    onSubmitUsername(username)
+    }
+  
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
-        <input type="text" />
+        {/* Associando o ref usernameE1 ao input */}
+        <input ref={usernameE1} id='username' type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
